@@ -1,0 +1,12 @@
+.panel > .image{
+    min-height: 50vh;
+    height: 50vh;
+}
+
+
+@media (min-width: 992px) { 
+    .panel > .image{
+        min-height: 90vh;
+        height: 90vh;
+    }
+}

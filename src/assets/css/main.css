@@ -1,0 +1,12 @@
+* { padding: 0; margin: 0; }
+html, body, #fullheight {
+    min-height: 100%;
+    height: 100%;
+}
+
+
+
+/* override template style */
+.panel > .image img{
+    background-size: cover;
+}
