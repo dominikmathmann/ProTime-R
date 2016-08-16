@@ -16,7 +16,10 @@ import "./assets/css/main.css";
         routing
     ],
     declarations: [AppComponent],
-    providers: [appRoutingProviders, provide(LocationStrategy, { useClass: HashLocationStrategy })],
+    providers: [
+        appRoutingProviders,
+        provide(LocationStrategy, { useClass: HashLocationStrategy })
+    ],
     bootstrap: [AppComponent],
 })
 export class AppModule { }

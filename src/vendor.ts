@@ -18,6 +18,8 @@ import 'rxjs';
 //jquery
 import 'jquery/dist/jquery.js'
 
+//firebase
+import 'script!firebase/firebase.js'
 
 //template 
 import './assets/template/assets/css/font-awesome.min.css'
