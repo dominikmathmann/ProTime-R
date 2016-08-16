@@ -1,17 +1,9 @@
 import {Component} from '@angular/core'
-import {HelloService} from '../../services/index'
-
-declare var require:any
 
 @Component({
     template: require('./home.component.html'),
     styles: [require('./home.component.css')],
-    providers: [HelloService]
+    providers: []
 })
 export class HomeComponent {
-    title:string;
-    
-    constructor(service: HelloService){
-        this.title = service.getHello();
-    }
 }

@@ -1,1 +1,32 @@
-Hello
+<form class="form-horizontal">
+    <fieldset>
+
+        <!-- Form Name -->
+        <legend>Zeiterfassung</legend>
+
+        <!-- Text input-->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="textinput">Projektnummer</label>  
+            <div class="col-md-4">
+                <input id="textinput" name="textinput" type="text" placeholder="" class="form-control input-md" #project>
+            </div>
+        </div>
+
+        <!-- Text input-->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="textinput">Beschreibung</label>  
+            <div class="col-md-4">
+                <input id="textinput" name="textinput" type="text" placeholder="" class="form-control input-md" #desc>
+            </div>
+        </div>
+
+        <!-- Button -->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="singlebutton"></label>
+            <div class="col-md-4">
+                <button id="add-project" class="button" on-click="start(project.value, desc.value)">Start</button>
+            </div>
+        </div>
+
+    </fieldset>
+</form>

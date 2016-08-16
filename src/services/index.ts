@@ -1,2 +1,2 @@
-export * from './hello.service'
 export * from './firebase.service'
+export * from './record.service'
