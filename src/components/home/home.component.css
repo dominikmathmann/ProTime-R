@@ -3,7 +3,6 @@
     height: 50vh;
 }
 
-
 @media (min-width: 992px) { 
     .panel > .image{
         min-height: 90vh;

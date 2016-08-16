@@ -1,5 +1,5 @@
 import {Component} from '@angular/core'
-import {HelloService} from './service/hello.service'
+import {HelloService} from '../../services/index'
 
 declare var require:any
 
