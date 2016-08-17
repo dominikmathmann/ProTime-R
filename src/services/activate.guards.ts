@@ -1,21 +1,23 @@
 import {Injectable} from '@angular/core'
 import {CanActivate, Router} from '@angular/router'
 import {FirebaseService} from './index'
+import {Observable} from 'rxjs'
 
 @Injectable()
-export class LoginGuard implements CanActivate {
-    constructor(private firebaseService: FirebaseService, private router:Router) { }
+export class LoginGuard {
+    constructor(private firebaseService: FirebaseService, private router: Router) { }
 
-    canActivate() {
-        var currentUser=this.firebaseService.user
-        if (!currentUser){
+    canActivate():any {
+        var currentUser = this.firebaseService.user
+        if (!currentUser) {
             //DUMMY
-            this.firebaseService.login("dominik.mathmann@gedoplan.de", "abc123").subscribe(e => { console.log("DUMMY Login Successfull")});
+            var obs: Observable<boolean>=this.firebaseService.login("dominik.mathmann@gedoplan.de", "abc123").map(e => true);
+            return obs;
             //
-//            this.router.navigateByUrl('/login')
-//            return false;
+            //            this.router.navigateByUrl('/login')
+            //            return false;
         }
-        
+
         return true;
     }
 }

@@ -1,9 +1,7 @@
 
 <nav-panel header="Zeiterfassung">
-    <div class="col-sm-6">
-        records
-    </div>
-    <div class="col-sm-6">
+
+    <div class="col-lg-6 col-sm-12">
         <form class="form-group" #form="ngForm">
             <div class="form-group">
                 <label for="project">Projekt</label>
@@ -21,16 +19,40 @@
                 <label for="end">Ende</label>
                 <input type="text" id="end" name="end" class="form-control" [(ngModel)]="endTime">
             </div>
-            
+
             <div class="col-md-offset-2 col-md-8" *ngIf="!recordService.record.endTime">
                 <button type="submit" class="button button-lg" on-click="start()" *ngIf="!recordService.record.id && !recordService.record.endTime">start</button>
                 <button type="submit" class="button button-lg" on-click="stop()" *ngIf="recordService.record.id && !recordService.record.endTime">stop</button>
             </div>
-            
+
             <div class="col-md-offset-2 col-md-8" *ngIf="recordService.record.endTime">
                 <button type="submit" class="button button-lg" on-click="save()" >save</button>
                 <button type="submit" class="button button-lg" on-click="clear()">clear</button>
             </div>
         </form>
+    </div>
+    <div class="col-lg-6 col-sm-12">
+        <table>
+            <thead>
+                <tr>
+                    <th>Projekt</th>
+                    <th>Beschreibung</th>
+                    <th>Start</th>
+                    <th>Ende</th>
+                    <th>Zeit</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="#r of records">
+                    <th>{{r.project}}</th>
+                    <th>{{r.description}}</th>
+                    <th>{{r.startTime | date:'dd.MM HH:mm'}}</th>
+                    <th>{{r.endTime | date:'dd.MM HH:mm'}}</th>
+                    <th></th>
+                    <th></th>
+                </tr>
+            </tbody>
+        </table>
     </div>
 </nav-panel>

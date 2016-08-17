@@ -14,11 +14,20 @@ declare var require: any
 })
 export class RecordingComponent {
 
-    constructor(private recordService: RecordService) { }
+    constructor(private recordService: RecordService) {
+    }
 
     endTime: Date;
 
     updatePoll: Subscription;
+
+    records: Record[];
+
+    ngAfterViewInit() {
+        this.recordService.getAll().subscribe(records => {
+            this.records = records;
+        })
+    }
 
     start() {
         this.recordService.record.startTime = new Date();

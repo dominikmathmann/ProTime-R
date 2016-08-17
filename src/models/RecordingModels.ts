@@ -1,5 +1,5 @@
 export class Record{
-    constructor(public project=0, public description=""){}
+    constructor(public project="gedoplan, intern", public description=""){}
 
     startTime:Date;
     endTime:Date

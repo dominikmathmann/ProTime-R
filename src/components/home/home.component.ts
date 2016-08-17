@@ -1,4 +1,5 @@
 import {Component} from '@angular/core'
+import {Router} from '@angular/router'
 import {FirebaseService} from '../../services/index'
 
 @Component({
@@ -7,5 +8,10 @@ import {FirebaseService} from '../../services/index'
     providers: []
 })
 export class HomeComponent {
-    constructor(public firebase:FirebaseService){}
+    constructor(public firebase:FirebaseService, private router:Router){}
+    
+    
+    logout(){
+        this.firebase.logout().subscribe(e => { this.router.navigateByUrl("/login")})
+    }
 }
