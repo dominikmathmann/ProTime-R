@@ -1,5 +1,5 @@
 {
-  "name": "timetable-client",
+  "name": "ProTime-R",
   "version": "1.0.0",
   "keywords": [
     "util",
@@ -16,7 +16,7 @@
     "start-prod": "webpack-dev-server --port 4300 --optimize-minimize",
     "protractor": "protractor test/protractor.conf.js --baseUrl http://localhost:4300",
     "test": "concurrently --kill-others 'npm run start-prod' 'npm run json-server' 'node ./test/delayed-protractor.js'",
-    "test-f": "nodemon -e ts,html,css --exec 'npm run test'"
+    "test-f": "nodemon --watch config -e ccxc --exec 'npm run protractor'"
   },
   "author": "Dominik Mathmann",
   "contributors": [],

@@ -58,7 +58,8 @@ module.exports = {
         new HtmlWebpackPlugin({
             hash: true,
             filename: 'index.html',
-            template: './src/index.html'
+            template: './src/index.html',
+            favicon: './src/favicon.ico'
         }),
         new webpack.ProvidePlugin({
             $: "jquery",

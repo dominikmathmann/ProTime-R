@@ -1,6 +1,6 @@
 import {Component} from '@angular/core'
 import {RecordService} from '../../services/index'
-import {NavButtonPanelComponent} from '../../shared/index'
+import {NavButtonPanelComponent} from '../shared/index'
 
 declare var require:any
 
