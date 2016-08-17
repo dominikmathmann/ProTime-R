@@ -6,12 +6,16 @@ import {FirebaseService} from './index'
 export class LoginGuard implements CanActivate {
     constructor(private firebaseService: FirebaseService, private router:Router) { }
 
-    canActivate():boolean {
+    canActivate() {
         var currentUser=this.firebaseService.user
         if (!currentUser){
-            this.router.navigateByUrl('/login')
+            //DUMMY
+            this.firebaseService.login("dominik.mathmann@gedoplan.de", "abc123").subscribe(e => { console.log("DUMMY Login Successfull")});
+            //
+//            this.router.navigateByUrl('/login')
+//            return false;
         }
         
-        return currentUser;
+        return true;
     }
 }

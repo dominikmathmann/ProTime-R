@@ -1,8 +1,10 @@
 import {Component} from '@angular/core'
 import {RecordService} from '../../services/index'
 import {NavButtonPanelComponent} from '../shared/index'
+import {Record} from '../../models/index'
+import {Observable, Subscription} from 'rxjs'
 
-declare var require:any
+declare var require: any
 
 @Component({
     template: require('./recording.component.html'),
@@ -11,18 +13,40 @@ declare var require:any
     directives: [NavButtonPanelComponent]
 })
 export class RecordingComponent {
-    
-    
-    constructor(private recordService: RecordService){
-    }
-    
-    ngOnInit(){
-        
-    }
-    
-    start(project:number, desc:string){
-        this.recordService.startRecording(project, desc).subscribe(resp => {
-            console.log(resp);
+
+    constructor(private recordService: RecordService) { }
+
+    endTime: Date;
+
+    updatePoll: Subscription;
+
+    start() {
+        this.recordService.record.startTime = new Date();
+        this.recordService.createRecording().subscribe(resp => {
+            this.updatePoll = Observable.interval(300000).subscribe(
+                interval => {
+                    this.recordService.record.endTime = new Date();
+                    this.recordService.updateRecord().subscribe(
+                        updateResponse => { }
+                    )
+                }
+            );
         })
     }
+
+    clear() {
+        this.recordService.deleteRecord().subscribe(e => { })
+    }
+
+    save() {
+        this.recordService.updateRecord().subscribe(e => { this.recordService.record = new Record() });
+    }
+
+    stop() {
+        this.endTime = new Date();
+        this.recordService.record.endTime = this.endTime;
+        this.updatePoll.unsubscribe();
+    }
+
+
 }

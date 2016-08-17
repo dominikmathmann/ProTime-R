@@ -1,28 +1,36 @@
-<form class="form-horizontal">
-    <nav-panel header="Zeiterfassung">
-        <!-- Text input-->
-        <div class="form-group">
-            <label class="col-md-4 control-label" for="textinput">Projektnummer</label>  
-            <div class="col-md-4">
-                <input id="textinput" name="textinput" type="text" placeholder="" class="form-control input-md" #project>
-            </div>
-        </div>
 
-        <!-- Text input-->
-        <div class="form-group">
-            <label class="col-md-4 control-label" for="textinput">Beschreibung</label>  
-            <div class="col-md-4">
-                <input id="textinput" name="textinput" type="text" placeholder="" class="form-control input-md" #desc>
+<nav-panel header="Zeiterfassung">
+    <div class="col-sm-6">
+        records
+    </div>
+    <div class="col-sm-6">
+        <form class="form-group" #form="ngForm">
+            <div class="form-group">
+                <label for="project">Projekt</label>
+                <input type="text" name="project" id="project" class="form-control" [(ngModel)]="recordService.record.project">
             </div>
-        </div>
-
-        <!-- Button -->
-        <div class="form-group">
-            <label class="col-md-4 control-label" for="singlebutton"></label>
-            <div class="col-md-4">
-                <button id="add-project" class="button" on-click="start(project.value, desc.value)">Start</button>
+            <div class="form-group">
+                <label for="desc">Beschreibung</label>
+                <input type="text" id="desc" name="desc" class="form-control" [(ngModel)]="recordService.record.description">
             </div>
-        </div>
-
-    </nav-panel>
-</form>
+            <div class="form-group">
+                <label for="start">Start</label>
+                <input type="text" id="start" name="start" class="form-control" [(ngModel)]="recordService.record.startTime">
+            </div>
+            <div class="form-group">
+                <label for="end">Ende</label>
+                <input type="text" id="end" name="end" class="form-control" [(ngModel)]="endTime">
+            </div>
+            
+            <div class="col-md-offset-2 col-md-8" *ngIf="!recordService.record.endTime">
+                <button type="submit" class="button button-lg" on-click="start()" *ngIf="!recordService.record.id && !recordService.record.endTime">start</button>
+                <button type="submit" class="button button-lg" on-click="stop()" *ngIf="recordService.record.id && !recordService.record.endTime">stop</button>
+            </div>
+            
+            <div class="col-md-offset-2 col-md-8" *ngIf="recordService.record.endTime">
+                <button type="submit" class="button button-lg" on-click="save()" >save</button>
+                <button type="submit" class="button button-lg" on-click="clear()">clear</button>
+            </div>
+        </form>
+    </div>
+</nav-panel>

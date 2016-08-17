@@ -4,6 +4,10 @@
     height: 50vh;
 }
 
+h1>img {
+    padding-bottom: 0.2em;
+}
+
 @media (min-width: 992px) { 
     .panel > .image{
         min-height: 90vh;

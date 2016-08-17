@@ -1,6 +1,7 @@
 export class Record{
-    constructor(public project:number, public description?:string){}
+    constructor(public project=0, public description=""){}
 
     startTime:Date;
     endTime:Date
+    id:string;
 }

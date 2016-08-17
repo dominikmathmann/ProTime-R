@@ -14,9 +14,6 @@ module.exports = {
         filename: '[name].bundle.js',
     },
     devServer: {
-        proxy: {
-            '/*': 'http://localhost:3000/'
-        }
     },
     htmlLoader: {
         minimize: false // workaround for ng2
@@ -59,7 +56,7 @@ module.exports = {
             hash: true,
             filename: 'index.html',
             template: './src/index.html',
-            favicon: './src/favicon.ico'
+            favicon: './src/assets/images/logoR.png'
         }),
         new webpack.ProvidePlugin({
             $: "jquery",
