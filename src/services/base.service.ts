@@ -11,8 +11,8 @@ export abstract class BaseService {
 
     }
       
-    getFireBaseUrl(restPath:string)
+    getFireBaseUserUrl(restPath:string)
     {
-        return this.baseUrl + restPath + ".json?auth=" + this.firebaseService.authToken;
+        return `${this.baseUrl}userdata/${this.firebaseService.user.uid}/${restPath}.json?auth=${this.firebaseService.authToken}`;
     }
 }

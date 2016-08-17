@@ -17,6 +17,6 @@ export class RecordService extends BaseService{
         let headers = new Headers({ 'Content-Type': 'application/json' });
         let options = new RequestOptions({ headers: headers });
 
-        return this.http.post(this.getFireBaseUrl("record"), JSON.stringify(record), options).map(e => e.json());
+        return this.http.post(this.getFireBaseUserUrl("record"), JSON.stringify(record), options).map(e => e.json());
     }
 }
