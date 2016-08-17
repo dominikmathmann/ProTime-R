@@ -1,5 +1,5 @@
 import {Component} from '@angular/core'
-import {FirebaseService, RecordService} from '../../services/index'
+import {RecordService} from '../../services/index'
 
 declare var require:any
 
@@ -11,10 +11,7 @@ declare var require:any
 export class RecordingComponent {
     
     
-    constructor(public firebaseService: FirebaseService, private recordService: RecordService){
-        this.firebaseService.login("dominik.mathmann@gedoplan.de", "abc123").subscribe(data => {
-            console.log(data);
-        })
+    constructor(private recordService: RecordService){
     }
     
     ngOnInit(){

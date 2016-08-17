@@ -1,3 +1,5 @@
 <div class="container">
     <router-outlet></router-outlet>
+    
+    <footer *ngIf="firebase.user">angemeldet als<br>{{firebase.user?.email}}</footer>
 </div>

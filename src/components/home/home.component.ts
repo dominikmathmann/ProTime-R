@@ -1,4 +1,5 @@
 import {Component} from '@angular/core'
+import {FirebaseService} from '../../services/index'
 
 @Component({
     template: require('./home.component.html'),
@@ -6,4 +7,5 @@ import {Component} from '@angular/core'
     providers: []
 })
 export class HomeComponent {
+    constructor(public firebase:FirebaseService){}
 }

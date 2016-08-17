@@ -24,9 +24,6 @@ import 'script!firebase/firebase.js'
 //template 
 import './assets/template/assets/css/font-awesome.min.css'
 import './assets/template/assets/css/main.css'
-import 'script!./assets/template/assets/js/skel.min.js'
-import './assets/template/assets/js/main.js'
-import './assets/template/assets/js/util.js'
 
 import './assets/template/assets/fonts/fontawesome-webfont.woff2'
 import './assets/template/assets/fonts/fontawesome-webfont.woff'
