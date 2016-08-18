@@ -1,6 +1,6 @@
 import {Component} from '@angular/core'
 import {RecordService} from '../../services/index'
-import {NavButtonPanelComponent} from '../shared/index'
+import {NavButtonPanelComponent, DateInputComponent} from '../shared/index'
 import {Record} from '../../models/index'
 import {Observable, Subscription} from 'rxjs'
 
@@ -10,12 +10,14 @@ declare var require: any
     template: require('./recording.component.html'),
     styles: [require('./recording.component.css')],
     providers: [],
-    directives: [NavButtonPanelComponent]
+    directives: [NavButtonPanelComponent, DateInputComponent]
 })
 export class RecordingComponent {
 
     constructor(private recordService: RecordService) {
     }
+
+    testDate=new Date();
 
     endTime: Date;
 

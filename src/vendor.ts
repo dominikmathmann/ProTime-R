@@ -18,6 +18,9 @@ import 'rxjs';
 //jquery
 import 'jquery/dist/jquery.js'
 
+//moment.js
+import 'moment/moment.js'
+
 //firebase
 import 'script!firebase/firebase.js'
 
