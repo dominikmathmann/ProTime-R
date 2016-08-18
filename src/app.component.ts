@@ -6,5 +6,5 @@ import {FirebaseService} from './services/index'
     selector: 'timetable-app',
 })
 export class AppComponent {
-    constructor(public firebase:FirebaseService){}
+    constructor(public firebase: FirebaseService) { }
 }

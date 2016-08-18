@@ -1,4 +1,4 @@
-import { NgModule, provide}      from '@angular/core';
+import { NgModule, provide, enableProdMode}      from '@angular/core';
 import {LocationStrategy, HashLocationStrategy} from '@angular/common';
 import { FormsModule }      from '@angular/forms';
 import { HttpModule }      from '@angular/http';
@@ -8,6 +8,15 @@ import { routing, appRoutingProviders } from './app.routing';
 import { AppComponent }  from './app.component';
 import { RecordService, FirebaseService}  from './services/index';
 import "./assets/css/main.css";
+declare var PRODMODE: boolean;
+
+if (PRODMODE) {
+    console.log("Running Application with PROD - Flag")
+    enableProdMode();
+}
+else {
+    console.log("Running Application with DEV - Flag")
+}
 
 @NgModule({
     imports: [

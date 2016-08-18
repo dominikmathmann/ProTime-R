@@ -7,15 +7,26 @@ import {Observable} from 'rxjs'
 export class LoginGuard {
     constructor(private firebaseService: FirebaseService, private router: Router) { }
 
-    canActivate():any {
+    canActivate(): any {
         var currentUser = this.firebaseService.user
         if (!currentUser) {
-            //DUMMY
-            var obs: Observable<boolean>=this.firebaseService.login("dominik.mathmann@gedoplan.de", "abc123").map(e => true);
+            this.router.navigateByUrl('/login')
+            return false;
+        }
+
+        return true;
+    }
+}
+
+@Injectable()
+export class AutoLoginGuard {
+    constructor(private firebaseService: FirebaseService, private router: Router) { }
+
+    canActivate(): any {
+        var currentUser = this.firebaseService.user
+        if (!currentUser) {
+            var obs: Observable<boolean> = this.firebaseService.login("xxx", "xxx").map(e => true);
             return obs;
-            //
-            //            this.router.navigateByUrl('/login')
-            //            return false;
         }
 
         return true;

@@ -9,13 +9,11 @@
     "browser"
   ],
   "scripts": {
-    "json-server": "json-server --routes ./test/routes.json --watch ./test/db.json",
-    "dev-server": "webpack-dev-server --hot --inline --port 4300",
-    "start": "concurrently 'npm run dev-server' 'npm run json-server'",
-    "prod": "webpack --optimize-minimize",
-    "start-prod": "webpack-dev-server --port 4300 --optimize-minimize",
+    "start": "webpack-dev-server --hot --inline --port 4300 --define PRODMODE=false",
+    "prod": "webpack --optimize-minimize --define PRODMODE=true",
+    "start-prod": "webpack-dev-server --port 4300 --optimize-minimize --define PRODMODE=true",
     "protractor": "protractor test/protractor.conf.js --baseUrl http://localhost:4300",
-    "test": "concurrently --kill-others 'npm run start-prod' 'npm run json-server' 'node ./test/delayed-protractor.js'",
+    "test": "concurrently --kill-others 'npm run start-prod' 'node ./test/delayed-protractor.js'",
     "test-f": "nodemon --watch config -e ccxc --exec 'npm run protractor'"
   },
   "author": "Dominik Mathmann",

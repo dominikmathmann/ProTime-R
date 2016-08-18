@@ -2,7 +2,9 @@ import { Routes, RouterModule } from '@angular/router';
 import {HomeComponent} from './components/home/home.component'
 import {RecordingComponent} from './components/recording/recording.component'
 import {LoginComponent} from './components/login/login.component'
-import {LoginGuard} from './services/index'
+import {LoginGuard, AutoLoginGuard} from './services/index'
+
+declare var PRODMODE: boolean;
 
 const appRoutes: Routes = [
     { path: '', component: HomeComponent },
@@ -12,7 +14,7 @@ const appRoutes: Routes = [
 ];
 
 export const appRoutingProviders: any[] = [
-    LoginGuard
+    { provide: LoginGuard, useClass: PRODMODE ? LoginGuard : AutoLoginGuard}
 ];
 
 export const routing = RouterModule.forRoot(appRoutes);

@@ -44,7 +44,7 @@
                 </tr>
             </thead>
             <tbody>
-                <tr *ngFor="#r of records">
+                <tr *ngFor="let r of records">
                     <th>{{r.project}}</th>
                     <th>{{r.description}}</th>
                     <th>{{r.startTime | date:'dd.MM HH:mm'}}</th>
