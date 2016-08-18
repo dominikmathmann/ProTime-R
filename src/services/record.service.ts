@@ -15,8 +15,8 @@ export class RecordService extends BaseService {
         if (!this._record) this._record = new Record();
         return this._record;
     }
-    
-    set record(r: Record) { this._record = r};
+
+    set record(r: Record) { this._record = r };
 
 
     constructor(private http: Http, @Inject('rest-url') baseUrl: string, public fb: FirebaseService) {
@@ -28,25 +28,26 @@ export class RecordService extends BaseService {
             .map(e => e.json())
             .do(json => this._record.id = json.name);
     }
-    
-    deleteRecord(id = this.record.id): Observable<any>{
-        return this.http.delete(this.getFireBaseUserUrl(`record/${id}`)).do(e => { this.record=undefined;})
+
+    deleteRecord(id = this.record.id): Observable<any> {
+        return this.http.delete(this.getFireBaseUserUrl(`record/${id}`)).do(e => { this.record = undefined; })
     }
-    
-    updateRecord(record = this.record){
+
+    updateRecord(record = this.record) {
         return this.http.put(this.getFireBaseUserUrl(`record/${record.id}`), JSON.stringify(record), this.defaultOptions);
     }
-    
-    getAll(limit = 10):Observable<Record[]>{
+
+    getAll(limit = 10): Observable<Record[]> {
         return this.http.get(this.getFireBaseUserUrl(`record`, `limit=${limit}`))
             .map(r => {
                 var jsonResponse = r.json();
                 return Object.keys(jsonResponse).map(key => {
                     var record: Record = jsonResponse[key];
-                    record.id=key;
+                    record.id = key;
                     return record;
                 })
+                    .reverse()
             });
-            
+
     }
 }

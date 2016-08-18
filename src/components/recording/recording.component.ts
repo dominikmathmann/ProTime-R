@@ -24,7 +24,11 @@ export class RecordingComponent {
     records: Record[];
 
     ngAfterViewInit() {
-        this.recordService.getAll().subscribe(records => {
+        this.loadRecords();
+    }
+
+    loadRecords(max = 10) {
+        this.recordService.getAll(max).subscribe(records => {
             this.records = records;
         })
     }
@@ -48,7 +52,10 @@ export class RecordingComponent {
     }
 
     save() {
-        this.recordService.updateRecord().subscribe(e => { this.recordService.record = new Record() });
+        this.recordService.updateRecord().subscribe(e => {
+            this.recordService.record = new Record()
+            this.loadRecords();
+        });
     }
 
     stop() {
