@@ -1,6 +1,11 @@
 {
     "elements": {
-        "nav-panel": {}
+        "nav-panel": {
+            "attributes": {
+                "header": {}
+            }
+        },
+        "r-dateinput": {}
     },
     "attributes": {}
 }

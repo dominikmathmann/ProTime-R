@@ -44,6 +44,8 @@ export class RecordService extends BaseService {
                 return Object.keys(jsonResponse).map(key => {
                     var record: Record = jsonResponse[key];
                     record.id = key;
+                    record.startTime = new Date(<any>record.startTime);
+                    record.endTime=new Date(<any>record.endTime);
                     return record;
                 })
                     .sort((a, b) => a.id>b.id?-1:1)

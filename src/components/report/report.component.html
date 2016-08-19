@@ -1,0 +1,78 @@
+<nav-panel header="Report">
+
+    <div id="filter-form">
+        <form class="form-group" #form="ngForm">
+            <div class="col-md-5 col-sm-12 form-group">
+                <label for ="project">Projekt</label>
+                <input type="text" name="project" class="form-control" bindon-ngModel="filter.project">
+            </div> 
+            <div class="col-md-2 col-sm-12 form-group">
+                <label for ="from">Projekt</label>
+                <r-dateinput name="from" class="form-control" bindon-ngModel="filter.from"></r-dateinput>
+            </div> 
+            <div class="col-md-2 col-sm-12 form-group">
+                <label for ="to">Projekt</label>
+                <r-dateinput name="to" class="form-control" bindon-ngModel="filter.to"></r-dateinput>
+            </div> 
+            <div class="col-md-3 form-group">
+                <button type="submit" on-click="doFilter()">filter</button>
+            </div> 
+        </form>
+    </div>
+
+    <div style="float: left">
+        <h2> Tätigkeitsnachweis </h2>
+        <div contentEditable="true"><br>      Kunde: <br> <div contentEditable="true"><b>...</b> </div>   </div>
+    </div>
+    <div style="float: right">
+        <center>
+            <div>            
+                <img src="./assets/gedo.png" alt="gedoplan" width="300">
+            </div>
+        </center>
+        <br/>
+        <div>GEDOPLAN GmbH <br>Stieghorster Straße 60 <br>33605 Bielefeld <br><br>Tel.: 0521 / 2088910 <br>Fax.: 0521 / 2088945 <br></div>
+    </div>
+    <div style="clear: both;">
+
+        <div style="display: table;width: auto;">
+            <section>
+                <div style="display: table-row" class="tbl-header">
+                    <div class="export-cell">Datum</div>
+                    <div class="export-cell">Projekt</div>
+                    <div class="export-cell">Zeit</div>
+                    <div class="export-cell">Tätigkeit</div>
+                </div>
+            </section>
+            <div *ngIf="summary">
+                <section *ngFor="let day of summary | mapKeys">
+                     <section *ngFor="let record of summary.get(day) | mapValues">
+                        <div style="display: table-row">
+                            <div class="export-cell">{{day}}</div>
+                            <div class="export-cell">{{record.key}}</div>
+                            <div class="export-cell">{{record.value.sum}}</div>
+                            <div class="export-cell">{{record.value.getDescription()}}</div>
+                        </div>
+                    </section>
+
+                    <div style="display: table-row">
+                        <div class="export-cell"></div>
+                        <div class="export-cell"></div>
+                        <div class="export-cell"><b>{{day.sum}}</b></div>
+                        <div class="export-cell"></div>
+                    </div>
+                    <hr style="border-color: black;"/>
+                </section>
+            </div>
+        </div>
+        <div style="display: table-row; border-top: 1px solid black">
+            <div class="export-cell"></div>
+            <div class="export-cell"></div>
+            <div class="export-cell"><b>{{recordsSum}}</b></div>
+            <div class="export-cell"></div>
+        </div>
+    </div>
+    <br/> <br/>                Ort,Datum / Unterschrift<br> <br>        _______________________________________________________    
+
+
+</nav-panel>
