@@ -1,8 +1,8 @@
 export class Record {
     constructor(public project = "gedoplan, intern", public description = "") { }
 
-    startTime: Date;
-    endTime: Date
+    startTime: number;
+    endTime: number
     id: string;
 }
 
@@ -18,7 +18,7 @@ export class RecordSummary {
 
     add(r: Record) {
         this.records.push(r);
-        this.sum = r.endTime && r.startTime ?this.sum + r.endTime.getTime() - r.startTime.getTime():this.sum;
+        this.sum = r.endTime && r.startTime ?this.sum + r.endTime - r.startTime:this.sum;
         this.descriptions.push(r.description);
     }
 

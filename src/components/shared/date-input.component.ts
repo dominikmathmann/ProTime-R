@@ -52,7 +52,7 @@ export class DateInputComponent implements ControlValueAccessor {
 
     change() {
         this._changeFunction(
-            moment(this.datevalue, this.dateFormat)
+            moment(this.datevalue, this.dateFormat).toDate().getTime()
         );
     }
 

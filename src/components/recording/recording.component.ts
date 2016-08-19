@@ -17,7 +17,7 @@ export class RecordingComponent {
     constructor(private recordService: RecordService) {
     }
 
-    endTime: Date;
+    endTime: number;
 
     updatePoll: Subscription;
 
@@ -36,11 +36,11 @@ export class RecordingComponent {
     }
 
     start() {
-        this.recordService.record.startTime = new Date();
+        this.recordService.record.startTime = new Date().getTime();
         this.recordService.createRecording().subscribe(resp => {
             this.updatePoll = Observable.interval(300000).subscribe(
                 interval => {
-                    this.recordService.record.endTime = new Date();
+                    this.recordService.record.endTime = new Date().getTime();
                     this.recordService.updateRecord().subscribe(
                         updateResponse => { }
                     )
@@ -74,7 +74,7 @@ export class RecordingComponent {
     }
 
     stop() {
-        this.endTime = new Date();
+        this.endTime = new Date().getTime();
         this.recordService.record.endTime = this.endTime;
         if (this.updatePoll) this.updatePoll.unsubscribe();
     }

@@ -41,11 +41,9 @@ export class RecordService extends BaseService {
         return this.http.get(this.getFireBaseUserUrl(`record`, `limitToLast=${limit}`, `orderBy="$key"`))
             .map(r => {
                 var jsonResponse = r.json();
-                return Object.keys(jsonResponse).map(key => {
+                return !jsonResponse?null:Object.keys(jsonResponse).map(key => {
                     var record: Record = jsonResponse[key];
                     record.id = key;
-                    if (record.startTime)record.startTime = new Date(<any>record.startTime);
-                    if (record.endTime)record.endTime=new Date(<any>record.endTime);
                     return record;
                 })
                     .sort((a, b) => a.id>b.id?-1:1)
