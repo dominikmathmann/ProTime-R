@@ -1,7 +1,7 @@
 exports.config = {
     params: {
-        username: "dominik.mathmann@gedoplan.de",
-        password: "abc123"
+        username: "dadom110@googlemail.com",
+        password: "Test123!"
     },
     baseUrl: 'http://localhost:4300/',
     exclude: [],
