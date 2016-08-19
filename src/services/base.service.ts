@@ -13,6 +13,6 @@ export abstract class BaseService {
       
     getFireBaseUserUrl(restPath:string,...params:string[])
     {
-        return `${this.baseUrl}userdata/${this.firebaseService.user.uid}/${restPath}.json?auth=${this.firebaseService.authToken}&${params.concat("&")}`;
+        return `${this.baseUrl}userdata/${this.firebaseService.user.uid}/${restPath}.json?auth=${this.firebaseService.authToken}&${params.join("&")}`;
     }
 }

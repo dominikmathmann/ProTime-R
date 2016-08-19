@@ -1,10 +1,6 @@
-"use strict"
+/// <reference path="../../typings/index.d.ts" />
 
-class LoginModel {
-    static getUsernameField() { return element(by.id("username")) }
-    static getPasswordField() { return element(by.id("password")) }
-    static getSubmitButton() { return element(by.className("button")) }
-}
+import {LoginModel as m} from './page-models'
 
 describe("Check Login-Route Funktions", () => {
     it("NotLoggedIn Should Go to Login", () => {
@@ -16,9 +12,9 @@ describe("Check Login-Route Funktions", () => {
 
     it("Log In to Home", () => {
         browser.get("#/login");
-        LoginModel.getUsernameField().sendKeys(browser.params.username);
-        LoginModel.getPasswordField().sendKeys(browser.params.password);
-        LoginModel.getSubmitButton().click().then(e => {
+        m.getUsernameField().sendKeys(browser.params.username);
+        m.getPasswordField().sendKeys(browser.params.password);
+        m.getSubmitButton().click().then( (e) => {
             expect(browser.getCurrentUrl()).toEqual(browser.baseUrl + "#/");
         })
 

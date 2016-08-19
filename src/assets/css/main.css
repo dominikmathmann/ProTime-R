@@ -56,3 +56,16 @@ footer{
 .light-panel-root, .light-panel .buttons{
     margin-top: 2em;
 }
+
+
+.ng-invalid{
+    border-color: #c7254e;
+    box-shadow: 0 0 0 1px #c7254e;
+}
+
+p.error{
+    color: #c7254e;
+    font-family: sans-serif;
+    font-weight: bold;
+    text-align: center;
+}

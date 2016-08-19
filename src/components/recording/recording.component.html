@@ -11,21 +11,23 @@
             </div>
             <div class="form-group">
                 <label for="start">Start</label>
-                <r-dateinput type="text" data="rdate" id="start" name="start" class="form-control" [(ngModel)]="recordService.record.startTime"></r-dateinput>
+                <r-dateinput #fStart="ngModel" type="text" data="rdate" id="startTime" name="start" class="form-control" [(ngModel)]="recordService.record.startTime"></r-dateinput>
+                <p *ngIf="!fStart.valid && fStart.touched">{{fStart.errors | errors}}</p>
             </div>
             <div class="form-group">
                 <label for="end">Ende</label>
-                <r-dateinput type="text" id="end" name="end" class="form-control" [(ngModel)]="endTime"></r-dateinput>
+                <r-dateinput #fEnd="ngModel" type="text" id="endTime" name="end" class="form-control" [(ngModel)]="endTime"></r-dateinput>
+                <p *ngIf="!fEnd.valid && fStart.touched">{{fEnd.errors | errors}}</p>
             </div>
 
             <div class="col-md-offset-2 col-md-8" *ngIf="!recordService.record.endTime">
-                <button type="submit" class="button button-lg" on-click="start()" *ngIf="!recordService.record.id && !recordService.record.endTime">start</button>
-                <button type="submit" class="button button-lg" on-click="stop()" *ngIf="recordService.record.id && !recordService.record.endTime">stop</button>
+                <button type="submit" id="start" class="button button-lg" on-click="start()" *ngIf="!recordService.record.id && !recordService.record.endTime">start</button>
+                <button type="submit" id="stop" class="button button-lg" on-click="stop()" *ngIf="recordService.record.id && !recordService.record.endTime">stop</button>
             </div>
 
             <div class="col-md-offset-2 col-md-8" *ngIf="recordService.record.endTime">
-                <button type="submit" class="button button-lg" on-click="save()" >save</button>
-                <button type="submit" class="button button-lg" on-click="clear()">clear</button>
+                <button type="submit" id="save" class="button button-lg" on-click="save()" [disabled]="!form.valid">save</button>
+                <button type="submit" id="clear" class="button button-lg" on-click="clear()">clear</button>
             </div>
         </form>
     </div>
@@ -38,17 +40,15 @@
                     <th>Start</th>
                     <th>Ende</th>
                     <th>Zeit</th>
-                    <th></th>
                 </tr>
             </thead>
             <tbody>
                 <tr *ngFor="let r of records">
-                    <th>{{r.project}}</th>
-                    <th>{{r.description}}</th>
-                    <th>{{r.startTime | date:'dd.MM HH:mm'}}</th>
-                    <th>{{r.endTime | date:'dd.MM HH:mm'}}</th>
-                    <th></th>
-                    <th></th>
+                    <td><a on-click="edit(r)">{{r.project}}</a></td>
+                    <td>{{r.description}}</td>
+                    <td>{{r.startTime | date:'dd.MM HH:mm'}}</td>
+                    <td>{{r.endTime | date:'dd.MM HH:mm'}}</td>
+                    <td></td>
                 </tr>
             </tbody>
         </table>

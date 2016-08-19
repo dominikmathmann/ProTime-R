@@ -4,9 +4,6 @@ exports.config = {
         password: "abc123"
     },
     baseUrl: 'http://localhost:4300/',
-    specs: [
-        './**/*.test.ts'
-    ],
     exclude: [],
     framework: 'jasmine2',
     allScriptsTimeout: 110000,

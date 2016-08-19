@@ -17,8 +17,6 @@ export class RecordingComponent {
     constructor(private recordService: RecordService) {
     }
 
-    testDate=new Date();
-
     endTime: Date;
 
     updatePoll: Subscription;
@@ -50,12 +48,25 @@ export class RecordingComponent {
     }
 
     clear() {
-        this.recordService.deleteRecord().subscribe(e => { })
+        this.recordService.deleteRecord().subscribe(e => {
+            this.loadRecords();
+            this.emptyForm();
+        })
+    }
+
+    emptyForm() {
+        this.recordService.record = new Record()
+        this.endTime = undefined;
+    }
+    
+    edit(record:Record){
+        this.endTime = record.endTime;
+        this.recordService.record=record;
     }
 
     save() {
         this.recordService.updateRecord().subscribe(e => {
-            this.recordService.record = new Record()
+            this.emptyForm();
             this.loadRecords();
         });
     }

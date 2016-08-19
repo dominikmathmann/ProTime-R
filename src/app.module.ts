@@ -6,16 +6,19 @@ import { BrowserModule } from '@angular/platform-browser';
 import { routing, appRoutingProviders } from './app.routing';
 
 import { AppComponent }  from './app.component';
+import { ErrorPipe }  from './components/shared/index';
 import { RecordService, FirebaseService}  from './services/index';
 import "./assets/css/main.css";
-declare var PRODMODE: boolean;
 
-if (PRODMODE) {
-    console.log("Running Application with PROD - Flag")
-    enableProdMode();
+const MODE=process.env.runtime;
+
+
+if (MODE=="development") {
+    console.log("Running Application with DEV - Flag")
 }
 else {
-    console.log("Running Application with DEV - Flag")
+    console.log("Running Application with PROD - Flag")
+    enableProdMode();
 }
 
 @NgModule({
@@ -25,7 +28,7 @@ else {
         HttpModule,
         routing
     ],
-    declarations: [AppComponent],
+    declarations: [AppComponent, ErrorPipe],
     providers: [
         appRoutingProviders,
         provide(LocationStrategy, { useClass: HashLocationStrategy }),

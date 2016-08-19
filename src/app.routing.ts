@@ -4,7 +4,7 @@ import {RecordingComponent} from './components/recording/recording.component'
 import {LoginComponent} from './components/login/login.component'
 import {LoginGuard, AutoLoginGuard} from './services/index'
 
-declare var PRODMODE: boolean;
+const MODE=process.env.runtime;
 
 const appRoutes: Routes = [
     { path: '', component: HomeComponent },
@@ -14,7 +14,7 @@ const appRoutes: Routes = [
 ];
 
 export const appRoutingProviders: any[] = [
-    { provide: LoginGuard, useClass: PRODMODE ? LoginGuard : AutoLoginGuard}
+    { provide: LoginGuard, useClass: MODE=="development" ? AutoLoginGuard : LoginGuard}
 ];
 
 export const routing = RouterModule.forRoot(appRoutes);

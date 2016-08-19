@@ -14,6 +14,7 @@ module.exports = {
         filename: '[name].bundle.js',
     },
     devServer: {
+        port: 4300
     },
     htmlLoader: {
         minimize: false // workaround for ng2

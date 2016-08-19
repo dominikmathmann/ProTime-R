@@ -1,4 +1,4 @@
-import {Component, Input, ElementRef, forwardRef, Renderer} from '@angular/core'
+import {Component, Input, ElementRef, forwardRef} from '@angular/core'
 import {ControlValueAccessor, NG_VALUE_ACCESSOR, NG_VALIDATORS, FormControl} from '@angular/forms'
 import * as moment from 'moment'
 
@@ -32,7 +32,7 @@ export class DateInputComponent implements ControlValueAccessor {
     styleClass: string;
 
 
-    constructor(public element: ElementRef, public renderer: Renderer) {
+    constructor(public element: ElementRef) {
     }
 
     ngAfterViewInit() {
@@ -41,9 +41,8 @@ export class DateInputComponent implements ControlValueAccessor {
     }
 
     validate(c: FormControl): { [key: string]: any } {
-        return {
-            'dateFormat': moment(this.datevalue, this.dateFormat).isValid()
-        }
+        
+        return moment(this.datevalue, this.dateFormat, true).isValid() ? {} : { "dateFormat": "Ungültiges Format, Format: " + this.dateFormat }
     }
 
     touch() {

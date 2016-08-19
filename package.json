@@ -9,10 +9,10 @@
     "browser"
   ],
   "scripts": {
-    "start": "webpack-dev-server --hot --inline --port 4300 --define PRODMODE=false",
-    "prod": "webpack --optimize-minimize --define PRODMODE=true",
-    "start-prod": "webpack-dev-server --port 4300 --optimize-minimize --define PRODMODE=true",
-    "protractor": "protractor test/protractor.conf.js --baseUrl http://localhost:4300",
+    "start": "webpack-dev-server --config ./webpack.dev.config.js --hot --inline",
+    "prod": "webpack --config ./webpack.prod.config.js",
+    "start-prod": "webpack-dev-server --config ./webpack.prod.config.js",
+    "protractor": "rimraf ./test/target && tsc ./test/**/*.ts -t ES5 --outDir ./test/target && protractor test/protractor.conf.js --specs './test/target/**/*.test.js'",
     "test": "concurrently --kill-others 'npm run start-prod' 'node ./test/delayed-protractor.js'",
     "test-f": "nodemon --watch config -e ccxc --exec 'npm run protractor'"
   },
@@ -61,11 +61,13 @@
     "jasmine-spec-reporter": "^2.5.0",
     "nodemon": "^1.10.0",
     "raw-loader": "^0.5.1",
+    "rimraf": "^2.5.4",
     "script-loader": "^0.7.0",
     "style-loader": "^0.13.1",
     "typescript": "^1.7.3",
     "typescript-loader": "^1.1.3",
     "webpack": "^1.13.1",
-    "webpack-dev-server": "^1.14.1"
+    "webpack-dev-server": "^1.14.1",
+    "webpack-merge": "^0.14.1"
   }
 }

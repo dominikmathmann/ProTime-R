@@ -38,7 +38,7 @@ export class RecordService extends BaseService {
     }
 
     getAll(limit = 10): Observable<Record[]> {
-        return this.http.get(this.getFireBaseUserUrl(`record`, `limit=${limit}`))
+        return this.http.get(this.getFireBaseUserUrl(`record`, `limitToLast=${limit}`, `orderBy="$key"`))
             .map(r => {
                 var jsonResponse = r.json();
                 return Object.keys(jsonResponse).map(key => {
@@ -46,7 +46,7 @@ export class RecordService extends BaseService {
                     record.id = key;
                     return record;
                 })
-                    .reverse()
+                    .sort((a, b) => a.id>b.id?-1:1)
             });
 
     }
