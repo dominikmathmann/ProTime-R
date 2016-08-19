@@ -23,12 +23,14 @@ export class RecordingComponent {
 
     records: Record[];
 
+    currentTableLimit = 10;
+
     ngAfterViewInit() {
         this.loadRecords();
     }
 
-    loadRecords(max = 10) {
-        this.recordService.getAll(max).subscribe(records => {
+    loadRecords() {
+        this.recordService.getAll(this.currentTableLimit).subscribe(records => {
             this.records = records;
         })
     }
@@ -58,10 +60,10 @@ export class RecordingComponent {
         this.recordService.record = new Record()
         this.endTime = undefined;
     }
-    
-    edit(record:Record){
+
+    edit(record: Record) {
         this.endTime = record.endTime;
-        this.recordService.record=record;
+        this.recordService.record = record;
     }
 
     save() {
@@ -74,7 +76,12 @@ export class RecordingComponent {
     stop() {
         this.endTime = new Date();
         this.recordService.record.endTime = this.endTime;
-        this.updatePoll.unsubscribe();
+        if (this.updatePoll) this.updatePoll.unsubscribe();
+    }
+
+    more() {
+        this.currentTableLimit *= 2;
+        this.loadRecords();
     }
 
 

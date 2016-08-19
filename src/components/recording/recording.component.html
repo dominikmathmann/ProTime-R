@@ -46,11 +46,18 @@
                 <tr *ngFor="let r of records">
                     <td><a on-click="edit(r)">{{r.project}}</a></td>
                     <td>{{r.description}}</td>
-                    <td>{{r.startTime | date:'dd.MM HH:mm'}}</td>
-                    <td>{{r.endTime | date:'dd.MM HH:mm'}}</td>
+                    <td><p *ngIf="r.startTime">{{r.startTime | date:'dd.MM HH:mm'}}</p></td>
+                    <td><p *ngIf="r.endTime">{{r.endTime | date:'dd.MM HH:mm'}}</p></td>
                     <td></td>
                 </tr>
             </tbody>
+            <tfoot>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td><a on-click="more()">more...</a></td>
+            </tfoot>
         </table>
     </div>
 </nav-panel>
