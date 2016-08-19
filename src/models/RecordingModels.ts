@@ -12,7 +12,7 @@ export class RecordSummary {
 
     private records: Record[] = [];
 
-    private sum = 0;
+    public sum = 0;
 
     private descriptions: string[]=[];
 

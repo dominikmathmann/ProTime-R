@@ -30,6 +30,14 @@ export class ReportComponent {
             this.summary=this.reportService.summarizeByDay(this.records);
         });
     }
+    
+    getDaySum(day:string){
+        return Array.from(this.summary.get(day).values()).reduce((prev, current) => { return prev + current.sum}, 0);
+    }
+    
+    getOverallSum(){
+        Array.from(this.summary.keys()).reduce((prev, current) => { return prev + this.getDaySum(current)}, 0);
+    }
 
 }
 

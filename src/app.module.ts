@@ -6,7 +6,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { routing, appRoutingProviders } from './app.routing';
 
 import { AppComponent }  from './app.component';
-import { ErrorPipe, MapValuesPipe, MapKeyPipe}  from './components/shared/index';
+import { ErrorPipe, MapValuesPipe, MapKeyPipe, TimeToHoursPipe}  from './components/shared/index';
 import { RecordService, FirebaseService}  from './services/index';
 import "./assets/css/main.css";
 
@@ -28,7 +28,7 @@ else {
         HttpModule,
         routing
     ],
-    declarations: [AppComponent, ErrorPipe, MapValuesPipe, MapKeyPipe],
+    declarations: [AppComponent, ErrorPipe, MapValuesPipe, MapKeyPipe, TimeToHoursPipe],
     providers: [
         appRoutingProviders,
         provide(LocationStrategy, { useClass: HashLocationStrategy }),
