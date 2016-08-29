@@ -41,13 +41,29 @@ export class RecordService extends BaseService {
         return this.http.get(this.getFireBaseUserUrl(`record`, `limitToLast=${limit}`, `orderBy="$key"`))
             .map(r => {
                 var jsonResponse = r.json();
-                return !jsonResponse?null:Object.keys(jsonResponse).map(key => {
-                    var record: Record = jsonResponse[key];
-                    record.id = key;
-                    return record;
+                return !jsonResponse ? null : Object.keys(jsonResponse).map(key => {
+                    return this.parseRecord(jsonResponse, key);
                 })
-                    .sort((a, b) => a.id>b.id?-1:1)
+                    .sort((a, b) => a.id > b.id ? -1 : 1)
             });
 
+    }
+
+    query(project = "", from = 0, to = Number.MAX_SAFE_INTEGER): Observable<Record[]> {
+        return this.http.get(this.getFireBaseUserUrl(`record`, `startAt=${from}`, `endAt=${to}`, `orderBy="startTime"`))
+            .map(r => {
+                var jsonResponse = r.json();
+                return !jsonResponse ? null : Object.keys(jsonResponse).map(key => {
+                    return this.parseRecord(jsonResponse, key);
+                })
+                    .sort((a, b) => a.id > b.id ? -1 : 1)
+                    .filter(r => r.project.startsWith(project));
+            });
+    }
+
+    private parseRecord(jsonResponse: {}, key: string) {
+        var record: Record = jsonResponse[key];
+        record.id = key;
+        return record;
     }
 }

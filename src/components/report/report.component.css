@@ -33,6 +33,15 @@ td, tr{
     padding:5px 0px;
 }
 
+.plusminus{
+    float:right;
+}
+
+.plusminus button{
+    padding: 2px 2px 2px 4px;
+    height: 3em;
+}
+
 @media print{
     #filter-form{
         display: none;
