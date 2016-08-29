@@ -32,7 +32,7 @@ else {
     providers: [
         appRoutingProviders,
         provide(LocationStrategy, { useClass: HashLocationStrategy }),
-        provide("rest-url", { useValue: 'https://timetable-b10ed.firebaseio.com/' }),
+        provide("rest-url", { useValue: "https://protime-r.firebaseio.com/" }),
         FirebaseService,
         RecordService,
     ],

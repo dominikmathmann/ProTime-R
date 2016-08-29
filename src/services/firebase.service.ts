@@ -7,16 +7,16 @@ declare var firebase: any;
 export class FirebaseService {
 
     private config = {
-        apiKey: "AIzaSyBXv57J2eWnEJdc5TCj4RhZ1oGeHPRS1rI",
-        authDomain: "timetable-b10ed.firebaseapp.com",
-        databaseURL: "https://timetable-b10ed.firebaseio.com",
-        storageBucket: "timetable-b10ed.appspot.com",
+        apiKey: "AIzaSyDGu_szYqNMsAmiD0Fy1yDnOJSrBWdC1IY",
+        authDomain: "protime-r.firebaseapp.com",
+        databaseURL: "https://protime-r.firebaseio.com",
+        storageBucket: "protime-r.appspot.com",
     };
 
     public user: any;
     public authToken: string;
-    
-    constructor(){
+
+    constructor() {
         firebase.initializeApp(this.config);
     }
 
@@ -26,7 +26,7 @@ export class FirebaseService {
     }
 
     public logout() {
-        this.user=undefined;
+        this.user = undefined;
         return Observable.from(firebase.auth().signOut());
     }
 }
