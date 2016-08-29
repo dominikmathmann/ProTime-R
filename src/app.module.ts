@@ -1,4 +1,4 @@
-import { NgModule, provide, enableProdMode}      from '@angular/core';
+import { NgModule, provide, enableProdMode, ExceptionHandler}      from '@angular/core';
 import {LocationStrategy, HashLocationStrategy} from '@angular/common';
 import { FormsModule }      from '@angular/forms';
 import { HttpModule }      from '@angular/http';
@@ -6,8 +6,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { routing, appRoutingProviders } from './app.routing';
 
 import { AppComponent }  from './app.component';
-import { ErrorPipe, MapValuesPipe, MapKeyPipe, TimeToHoursPipe}  from './components/shared/index';
-import { RecordService, FirebaseService}  from './services/index';
+import { ErrorPipe, MapValuesPipe, MapKeyPipe, TimeToHoursPipe}  from './components/index';
+import { RecordService, FirebaseService, CustomExceptionHandler}  from './services/index';
 import "./assets/css/main.css";
 
 const MODE=process.env.runtime;
@@ -35,6 +35,7 @@ else {
         provide("rest-url", { useValue: "https://protime-r.firebaseio.com/" }),
         FirebaseService,
         RecordService,
+        provide(ExceptionHandler, { useClass: CustomExceptionHandler})
     ],
     bootstrap: [AppComponent],
 })

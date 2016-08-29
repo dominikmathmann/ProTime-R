@@ -1,8 +1,8 @@
 import { Routes, RouterModule } from '@angular/router';
-import {HomeComponent} from './components/home/home.component'
-import {RecordingComponent} from './components/recording/recording.component'
-import {LoginComponent} from './components/login/login.component'
-import {ReportComponent} from './components/report/report.component'
+import {HomeComponent} from './pages/home/home.component'
+import {RecordingComponent} from './pages/recording/recording.component'
+import {LoginComponent} from './pages/login/login.component'
+import {ReportComponent} from './pages/report/report.component'
 import {LoginGuard, AutoLoginGuard} from './services/index'
 
 const MODE=process.env.runtime;

@@ -39,14 +39,14 @@ module.exports = {
             },
             {
                 test: /\.css$/,
-                exclude: /\/components\//,
+                exclude: /\/(components|pages)\//,
                 loader: "style!css"
             },
             {
                 test: /\.css$/,
-                include: /\/components\//,
+                include: /\/(components|pages)\//,
                 loader: 'raw'
-            }
+            },
         ]
     },
     plugins: [

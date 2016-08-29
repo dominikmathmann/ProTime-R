@@ -1,6 +1,6 @@
 import {Component} from '@angular/core'
 import {RecordService, ReportService} from '../../services/index'
-import {NavButtonPanelComponent, DateInputComponent} from '../shared/index'
+import {NavButtonPanelComponent, DateInputComponent} from '../../components/index'
 import {Record, RecordSummary} from '../../models/index'
 import {Observable, Subscription} from 'rxjs'
 import * as moment from 'moment/moment'
