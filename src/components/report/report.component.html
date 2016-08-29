@@ -2,20 +2,18 @@
 
     <div id="filter-form">
         <form class="form-group" #form="ngForm">
-            <div class="col-md-3 col-sm-12 form-group">
+            <div class="col-md-5 col-sm-12 form-group">
                 <label for ="project">Projekt</label>
                 <input type="text" name="project" class="form-control" bindon-ngModel="filter.project">
             </div> 
-            <div class="col-md-2 col-sm-12 form-group">
+            <div class="col-md-2 col-sm-12 form-group input-wbutton">
                 <label for ="from">Start</label>
                 <r-dateinput name="from" class="form-control" bindon-ngModel="filter.from"></r-dateinput>
-            </div> 
-            <div class="col-md-1 col-sm-12">
                 <div class="plusminus">
                     <button class="glyphicon glyphicon-plus" on-click="addMonth(1)"></button>
                     <button class="glyphicon glyphicon-minus" on-click="addMonth(-1)"></button>
                 </div>
-            </div>
+            </div> 
             <div class="col-md-2 col-sm-12 form-group">
                 <label for ="to">Ende</label>
                 <r-dateinput name="to" class="form-control" bindon-ngModel="filter.to"></r-dateinput>
