@@ -1,0 +1,17 @@
+{
+  "rules": {
+    "userdata": {
+      "$uid": {
+        ".write": "$uid === auth.uid",
+        ".read": "$uid === auth.uid",
+        "record": {
+          ".indexOn": [
+            "project",
+            "endTime",
+            "startTime"
+          ]
+        }
+      }
+    }
+  }
+}

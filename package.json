@@ -11,6 +11,7 @@
   "scripts": {
     "start": "webpack-dev-server --config ./webpack.dev.config.js --hot --inline",
     "prod": "webpack --config ./webpack.prod.config.js",
+    "deploy": "webpack --config ./webpack.prod.config.js && firebase deploy",
     "start-prod": "webpack-dev-server --config ./webpack.prod.config.js",
     "protractor": "rimraf ./test/target && tsc ./test/**/*.ts -t ES5 --outDir ./test/target && protractor test/protractor.conf.js --specs './test/target/**/*.test.js'",
     "test": "concurrently --kill-others 'npm run start-prod' 'node ./test/delayed-protractor.js'",

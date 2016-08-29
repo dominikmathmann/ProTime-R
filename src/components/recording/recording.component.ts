@@ -23,7 +23,13 @@ export class RecordingComponent {
 
     currentTableLimit = 10;
     
-    running:boolean;
+    set running(r:boolean){
+        this.recordService.running=r;
+    }
+    
+    get running(){
+        return this.recordService.running;
+    }
 
     ngAfterViewInit() {
         this.loadRecords();
@@ -37,6 +43,7 @@ export class RecordingComponent {
 
     start() {
         this.running=true;
+        this.recordService.record.endTime=undefined;
         this.recordService.record.startTime = new Date().getTime();
         this.recordService.createRecording().subscribe(resp => {
             this.updatePoll = Observable.interval(300000).subscribe(

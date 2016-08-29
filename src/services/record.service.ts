@@ -11,6 +11,8 @@ export class RecordService extends BaseService {
 
     private _record: Record;
 
+    running: boolean;
+
     get record() {
         if (!this._record) this._record = new Record();
         return this._record;
