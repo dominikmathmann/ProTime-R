@@ -12,7 +12,7 @@ describe("Erfassungs-Tests", () => {
     it("Cancel Entry", () => {
         var firstRecordStartTime = m.getTableFirstStartTimeEntry().getText();
         m.getStartButton().click();
-        browser.ignoreSynchronization = true; // defualt:false = protractor whould wait on the endless polling
+        browser.ignoreSynchronization = true; // default:false = protractor whould wait on the endless polling
         browser.sleep(2000)
         expect(m.getStartButton().isPresent()).toBeFalsy();
         m.getStopButton().click();
@@ -28,7 +28,7 @@ describe("Erfassungs-Tests", () => {
     it("Submit Entry", () => {
         var firstRecordStartTime = m.getTableFirstStartTimeEntry().getText();
         m.getStartButton().click();
-        browser.ignoreSynchronization = true; // defualt:false = protractor whould wait on the endless polling
+        browser.ignoreSynchronization = true; // default:false = protractor whould wait on the endless polling
         browser.sleep(2000)
         expect(m.getStartButton().isPresent()).toBeFalsy();
         m.getStopButton().click();
@@ -46,6 +46,7 @@ describe("Erfassungs-Tests", () => {
         m.getStartField().clear();
         m.getStartField().sendKeys("01.01.2000 15:00");
         m.getSaveButton().click();
+        browser.sleep(2000)
         var firstRecordStartTime = m.getTableFirstStartTimeEntry().getText();
         expect(firstRecordStartTime).toEqual("01.01 15:00");
     })

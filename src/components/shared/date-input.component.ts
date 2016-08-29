@@ -42,7 +42,7 @@ export class DateInputComponent implements ControlValueAccessor {
 
     validate(c: FormControl): { [key: string]: any } {
         
-        return moment(this.datevalue, this.dateFormat, true).isValid() ? {} : { "dateFormat": "Ungültiges Format, Format: " + this.dateFormat }
+        return !this.datevalue || moment(this.datevalue, this.dateFormat, true).isValid() ? {} : { "dateFormat": "Ungültiges Format, Format: " + this.dateFormat }
     }
 
     touch() {

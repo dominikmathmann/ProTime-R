@@ -10,7 +10,7 @@ describe("Erfassungs-Tests", function () {
     it("Cancel Entry", function () {
         var firstRecordStartTime = page_models_1.ErfassungModel.getTableFirstStartTimeEntry().getText();
         page_models_1.ErfassungModel.getStartButton().click();
-        browser.ignoreSynchronization = true; // defualt:false = protractor whould wait on the endless polling
+        browser.ignoreSynchronization = true; // default:false = protractor whould wait on the endless polling
         browser.sleep(2000);
         expect(page_models_1.ErfassungModel.getStartButton().isPresent()).toBeFalsy();
         page_models_1.ErfassungModel.getStopButton().click();
@@ -23,7 +23,7 @@ describe("Erfassungs-Tests", function () {
     it("Submit Entry", function () {
         var firstRecordStartTime = page_models_1.ErfassungModel.getTableFirstStartTimeEntry().getText();
         page_models_1.ErfassungModel.getStartButton().click();
-        browser.ignoreSynchronization = true; // defualt:false = protractor whould wait on the endless polling
+        browser.ignoreSynchronization = true; // default:false = protractor whould wait on the endless polling
         browser.sleep(2000);
         expect(page_models_1.ErfassungModel.getStartButton().isPresent()).toBeFalsy();
         page_models_1.ErfassungModel.getStopButton().click();
@@ -39,6 +39,7 @@ describe("Erfassungs-Tests", function () {
         page_models_1.ErfassungModel.getStartField().clear();
         page_models_1.ErfassungModel.getStartField().sendKeys("01.01.2000 15:00");
         page_models_1.ErfassungModel.getSaveButton().click();
+        browser.sleep(2000);
         var firstRecordStartTime = page_models_1.ErfassungModel.getTableFirstStartTimeEntry().getText();
         expect(firstRecordStartTime).toEqual("01.01 15:00");
     });

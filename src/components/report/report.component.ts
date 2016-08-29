@@ -32,11 +32,13 @@ export class ReportComponent {
     }
     
     getDaySum(day:string){
-        return Array.from(this.summary.get(day).values()).reduce((prev, current) => { return prev + current.sum}, 0);
+        let sumDay=Array.from(this.summary.get(day).values()).reduce((prev, current) => { return prev + current.sum}, 0);
+        return sumDay;
     }
     
     getOverallSum(){
-        Array.from(this.summary.keys()).reduce((prev, current) => { return prev + this.getDaySum(current)}, 0);
+        let overallSum=Array.from(this.summary.keys()).reduce((prev, current) => { return prev + this.getDaySum(current)}, 0);
+        return overallSum;
     }
 
 }

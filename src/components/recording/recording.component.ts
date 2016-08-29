@@ -17,13 +17,13 @@ export class RecordingComponent {
     constructor(private recordService: RecordService) {
     }
 
-    endTime: number;
-
     updatePoll: Subscription;
 
     records: Record[];
 
     currentTableLimit = 10;
+    
+    running:boolean;
 
     ngAfterViewInit() {
         this.loadRecords();
@@ -36,6 +36,7 @@ export class RecordingComponent {
     }
 
     start() {
+        this.running=true;
         this.recordService.record.startTime = new Date().getTime();
         this.recordService.createRecording().subscribe(resp => {
             this.updatePoll = Observable.interval(300000).subscribe(
@@ -50,6 +51,7 @@ export class RecordingComponent {
     }
 
     clear() {
+        this.running=false;
         this.recordService.deleteRecord().subscribe(e => {
             this.loadRecords();
             this.emptyForm();
@@ -57,12 +59,13 @@ export class RecordingComponent {
     }
 
     emptyForm() {
-        this.recordService.record = new Record()
-        this.endTime = undefined;
+        this.running=false;
+        this.recordService.record.id=null
+        this.recordService.record.startTime=null
+        this.recordService.record.endTime=null
     }
 
     edit(record: Record) {
-        this.endTime = record.endTime;
         this.recordService.record = record;
     }
 
@@ -74,8 +77,8 @@ export class RecordingComponent {
     }
 
     stop() {
-        this.endTime = new Date().getTime();
-        this.recordService.record.endTime = this.endTime;
+        this.running=false;
+        this.recordService.record.endTime = new Date().getTime();
         if (this.updatePoll) this.updatePoll.unsubscribe();
     }
 
