@@ -18,7 +18,7 @@ export class FirebaseService {
 
     public refreshToken() {
         this.user.getToken(true).then((e: any) => {
-            this.authToken = e.cd;
+            this.authToken = e;
         })
     }
 
