@@ -15,6 +15,6 @@ export class LoginComponent {
     login(username: string, password: string) {
         this.firebase.login(username, password).subscribe(data => {
             this.router.navigateByUrl('/')
-        }, error => { this.app.error="Login failed"})
+        }, error => { console.log(error);this.app.error="Login failed"})
     }
 }

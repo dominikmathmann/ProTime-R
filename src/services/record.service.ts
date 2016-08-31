@@ -36,7 +36,9 @@ export class RecordService extends BaseService {
     }
 
     updateRecord(record = this.record) {
-        return this.http.put(this.getFireBaseUserUrl(`record/${record.id}`), JSON.stringify(record), this.defaultOptions);
+        let url=this.getFireBaseUserUrl(`record/${record.id}`);
+        this.fb.refreshToken();
+        return this.http.put(url, JSON.stringify(record), this.defaultOptions);
     }
 
     getAll(limit = 10): Observable<Record[]> {

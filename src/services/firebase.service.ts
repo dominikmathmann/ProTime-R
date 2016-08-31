@@ -16,12 +16,18 @@ export class FirebaseService {
     public user: any;
     public authToken: string;
 
+    public refreshToken() {
+        this.user.getToken(true).then((e: any) => {
+            this.authToken = e.cd;
+        })
+    }
+
     constructor() {
         firebase.initializeApp(this.config);
     }
 
     public login(username: string, password: string): Observable<any> {
-        var observer = Observable.from(firebase.auth().signInWithEmailAndPassword(username, password)).do((e: any) => { this.user = e; console.log(e); this.authToken = e.cd }).map((data: any) => { return data.cd; });
+        var observer = Observable.from(firebase.auth().signInWithEmailAndPassword(username, password)).do((e: any) => { this.user = e; this.authToken = e.cd }).map((data: any) => { return data.cd; });
         return observer;
     }
 

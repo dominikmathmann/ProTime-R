@@ -50,7 +50,8 @@ export class RecordingComponent {
                 interval => {
                     this.recordService.record.endTime = new Date().getTime();
                     this.recordService.updateRecord().subscribe(
-                        updateResponse => { }
+                        updateResponse => { 
+                        }
                     )
                 }
             );
