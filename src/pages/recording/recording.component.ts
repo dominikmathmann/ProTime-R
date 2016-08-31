@@ -44,7 +44,7 @@ export class RecordingComponent {
         this.recordService.record.endTime=undefined;
         this.recordService.record.startTime = new Date().getTime();
         this.recordService.createRecording().subscribe(resp => {
-
+            this.recordService.startUpdatePolling();
         })
     }
 
