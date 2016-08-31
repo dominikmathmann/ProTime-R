@@ -4,7 +4,7 @@ import {Record} from '../models/index'
 import {BaseService} from './base.service'
 import {FirebaseService} from '../services/index'
 
-import {Observable} from 'rxjs'
+import {Observable, Subscription} from 'rxjs'
 
 @Injectable()
 export class RecordService extends BaseService {
@@ -12,6 +12,23 @@ export class RecordService extends BaseService {
     private _record: Record;
 
     running: boolean;
+
+    updatePoll: Subscription;
+
+    startUpdatePolling() {
+        this.updatePoll = Observable.interval(300000).subscribe(
+            interval => {
+                this.record.endTime = new Date().getTime();
+                this.updateRecord().subscribe(
+                    updateResponse => { }
+                )
+            }
+        );
+    }
+
+    stopUpdatePolling() {
+        if (this.updatePoll) this.updatePoll.unsubscribe();
+    }
 
     get record() {
         if (!this._record) this._record = new Record();
@@ -36,7 +53,7 @@ export class RecordService extends BaseService {
     }
 
     updateRecord(record = this.record) {
-        let url=this.getFireBaseUserUrl(`record/${record.id}`);
+        let url = this.getFireBaseUserUrl(`record/${record.id}`);
         this.fb.refreshToken();
         return this.http.put(url, JSON.stringify(record), this.defaultOptions);
     }

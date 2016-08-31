@@ -2,7 +2,7 @@ import {Component} from '@angular/core'
 import {RecordService} from '../../services/index'
 import {NavButtonPanelComponent, DateInputComponent} from '../../components/index'
 import {Record} from '../../models/index'
-import {Observable, Subscription} from 'rxjs'
+import {Observable} from 'rxjs'
 
 declare var require: any
 
@@ -16,8 +16,6 @@ export class RecordingComponent {
 
     constructor(private recordService: RecordService) {
     }
-
-    updatePoll: Subscription;
 
     records: Record[];
 
@@ -46,15 +44,7 @@ export class RecordingComponent {
         this.recordService.record.endTime=undefined;
         this.recordService.record.startTime = new Date().getTime();
         this.recordService.createRecording().subscribe(resp => {
-            this.updatePoll = Observable.interval(300000).subscribe(
-                interval => {
-                    this.recordService.record.endTime = new Date().getTime();
-                    this.recordService.updateRecord().subscribe(
-                        updateResponse => { 
-                        }
-                    )
-                }
-            );
+
         })
     }
 
@@ -87,7 +77,7 @@ export class RecordingComponent {
     stop() {
         this.running=false;
         this.recordService.record.endTime = new Date().getTime();
-        if (this.updatePoll) this.updatePoll.unsubscribe();
+        this.recordService.stopUpdatePolling();
     }
 
     more() {
