@@ -48,7 +48,7 @@
                     <td>{{r.description}}</td>
                     <td><p *ngIf="r.startTime">{{r.startTime | date:'dd.MM HH:mm'}}</p></td>
                     <td><p *ngIf="r.endTime">{{r.endTime | date:'dd.MM HH:mm'}}</p></td>
-                    <td></td>
+                    <td>{{r.endTime - r.startTime | timeToHours}}</td>
                 </tr>
             </tbody>
             <tfoot>
