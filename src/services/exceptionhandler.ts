@@ -1,5 +1,5 @@
 import {ExceptionHandler, Injectable, Injector} from '@angular/core'
-import {AppComponent} from '../app.component';
+import {ExceptionService} from './index'
 
 @Injectable()
 export class CustomExceptionHandler extends ExceptionHandler {
@@ -10,7 +10,8 @@ export class CustomExceptionHandler extends ExceptionHandler {
     }
     
     call(error: any, stackTrace: any = null, reason: any = null) {
-        this.injector.get(AppComponent).error="Unexpected Error: " + error;
+        this.injector.get(ExceptionService).error="Unexpected Error: " + error;
+        console.log(error, stackTrace, reason);
         super.call(error, stackTrace, reason);
     }
 }

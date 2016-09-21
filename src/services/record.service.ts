@@ -65,7 +65,7 @@ export class RecordService extends BaseService {
                 return !jsonResponse ? null : Object.keys(jsonResponse).map(key => {
                     return this.parseRecord(jsonResponse, key);
                 })
-                    .sort((a, b) => a.id > b.id ? -1 : 1)
+                    .sort((a, b) => a.startTime > b.startTime ? -1 : 1)
             });
 
     }
@@ -77,7 +77,7 @@ export class RecordService extends BaseService {
                 return !jsonResponse ? null : Object.keys(jsonResponse).map(key => {
                     return this.parseRecord(jsonResponse, key);
                 })
-                    .sort((a, b) => a.id > b.id ? -1 : 1)
+                    .sort((a, b) => a.startTime > b.startTime ? 1 : -1)
                     .filter(r => r.project.startsWith(project));
             });
     }

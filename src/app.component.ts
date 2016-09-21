@@ -1,5 +1,6 @@
 import {Component} from '@angular/core'
 import {FirebaseService} from './services/index'
+import {ExceptionService} from './services/index'
 
 @Component({
     template: require('./app.component.html'),
@@ -7,7 +8,5 @@ import {FirebaseService} from './services/index'
 })
 export class AppComponent {
     
-    error:string;
-    
-    constructor(public firebase: FirebaseService) { }
+    constructor(public firebase: FirebaseService, public errorService:ExceptionService) { }
 }

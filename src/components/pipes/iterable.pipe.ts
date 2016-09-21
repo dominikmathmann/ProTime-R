@@ -14,6 +14,8 @@ export class MapValuesPipe implements PipeTransform {
 @Pipe({ name: 'mapKeys', pure: false })
 export class MapKeyPipe implements PipeTransform {
     transform(value: any, args: any[] = null): any {
-        return Array.from(value.keys());
+        let a:any;
+        let elements=Array.from(value.keys());
+        return elements;
     }
 }

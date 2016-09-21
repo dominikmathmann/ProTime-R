@@ -1,4 +1,4 @@
-<div class="alert alert-danger" role="alert" *ngIf="error">{{error}} <a on-click='error=""' class="glyphicon glyphicon-remove"></a></div>
+<div class="alert alert-danger" role="alert" *ngIf="errorService.error">{{errorService.error}} <a on-click='errorService.error=""' class="glyphicon glyphicon-remove"></a></div>
 <div class="container root">
     <router-outlet></router-outlet>
     

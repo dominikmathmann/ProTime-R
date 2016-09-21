@@ -2,6 +2,7 @@ import {Component} from '@angular/core'
 import {Router} from '@angular/router'
 import {FirebaseService} from '../../services/index'
 import {AppComponent} from '../../app.component'
+import {ExceptionService} from '../..//services/index'
 
 @Component({
     template: require('./login.component.html'),
@@ -10,7 +11,7 @@ import {AppComponent} from '../../app.component'
 })
 export class LoginComponent {
 
-    constructor(public firebase: FirebaseService, private router:Router, private app:AppComponent) { }
+    constructor(public firebase: FirebaseService, private router:Router, private app:ExceptionService) { }
 
     login(username: string, password: string) {
         this.firebase.login(username, password).subscribe(data => {

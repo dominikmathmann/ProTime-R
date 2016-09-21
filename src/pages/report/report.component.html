@@ -47,7 +47,7 @@
                     <td class="export-cell export-header">Tätigkeit</td>
                 </tr>
             </table>
-            <table *ngFor="let day of summary | mapKeys">
+            <table *ngFor="let day of summary | mapKeys:true">
                 <tr *ngFor="let record of summary.get(day) | mapValues">
                     <td class="export-cell">{{day}}</td>
                     <td class="export-cell">{{record.key}}</td>

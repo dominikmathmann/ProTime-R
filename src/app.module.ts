@@ -7,13 +7,13 @@ import { routing, appRoutingProviders } from './app.routing';
 
 import { AppComponent }  from './app.component';
 import { ErrorPipe, MapValuesPipe, MapKeyPipe, TimeToHoursPipe}  from './components/index';
-import { RecordService, FirebaseService, CustomExceptionHandler}  from './services/index';
+import { RecordService, FirebaseService, CustomExceptionHandler, ExceptionService}  from './services/index';
 import "./assets/css/main.css";
 
-const MODE=process.env.runtime;
+const MODE = process.env.runtime;
 
 
-if (MODE=="development") {
+if (MODE == "development") {
     console.log("Running Application with DEV - Flag")
 }
 else {
@@ -30,12 +30,13 @@ else {
     ],
     declarations: [AppComponent, ErrorPipe, MapValuesPipe, MapKeyPipe, TimeToHoursPipe],
     providers: [
+        ExceptionService,
         appRoutingProviders,
         provide(LocationStrategy, { useClass: HashLocationStrategy }),
         provide("rest-url", { useValue: "https://protime-r.firebaseio.com/" }),
         FirebaseService,
         RecordService,
-        provide(ExceptionHandler, { useClass: CustomExceptionHandler})
+        provide(ExceptionHandler, { useClass: CustomExceptionHandler })
     ],
     bootstrap: [AppComponent],
 })
