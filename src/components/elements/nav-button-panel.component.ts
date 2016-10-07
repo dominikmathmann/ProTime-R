@@ -2,7 +2,7 @@ import {Component, Input} from '@angular/core'
 import {Router} from '@angular/router'
 
 @Component({
-    template: `<fieldset><legend>{{header}}<a class="button" [routerLink]="navigateTo">{{navLabel}}</a></legend><ng-content></ng-content></fieldset>`,
+    template: `<fieldset><legend class="navlegend">{{header}}<a class="button" [routerLink]="navigateTo">{{navLabel}}</a></legend><ng-content></ng-content></fieldset>`,
     styles: [
         `fieldset{margin-top: 2em;}`,
         `legend{line-height: 1.6em;}`,

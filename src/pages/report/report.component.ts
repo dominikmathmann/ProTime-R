@@ -21,7 +21,6 @@ export class ReportComponent {
 
         this.filter.from = fromDate.toDate().getTime();
         this.filter.to = toDate.toDate().getTime();
-
         this.doFilter();
     }
 

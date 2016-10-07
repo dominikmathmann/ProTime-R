@@ -47,10 +47,3 @@ td, tr{
     padding: 2px 2px 2px 6px;
     height: 2em;
 }
-
-@media print{
-    #filter-form, legend{
-        display: none;
-    }    
-    
-}

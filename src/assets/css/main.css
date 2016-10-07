@@ -73,3 +73,10 @@ p.error{
     font-weight: bold;
     text-align: center;
 }
+
+@media print{
+    #filter-form, legend, .navlegend, .footer{
+        display: none;
+    }    
+    
+}
